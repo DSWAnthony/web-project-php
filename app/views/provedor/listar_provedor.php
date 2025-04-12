@@ -55,36 +55,39 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
                                 <td><?= $proveedor->nombre ?></td>
                                 <td><?= $proveedor->telefono ?></td>
                                 <td>
-                                    <!-- Botón Info -->
-                                    <button 
-                                        class="btn btn-info btn-sm btn-modal" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#mainModal" 
-                                        data-url="mostrar_provedor.php" 
-                                        data-id="<?= $proveedor->proveedor_id ?>">
-                                        <i class="fas fa-info-circle"></i> Info
-                                    </button>
+    <!-- Botón Info -->
+    <button 
+        type="button" 
+        class="btn btn-outline-info btn-sm btn-modal" 
+        data-bs-toggle="modal" 
+        data-bs-target="#mainModal" 
+        data-url="mostrar_provedor.php" 
+        data-id="<?= $proveedor->proveedor_id ?>">
+        <i class="fa-solid fa-info"></i>
+    </button>
 
-                                    <!-- Botón Editar -->
-                                    <button 
-                                        class="btn btn-warning btn-sm btn-modal" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#mainModal" 
-                                        data-url="editar_provedor.php" 
-                                        data-id="<?= $proveedor->proveedor_id ?>">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </button>
+    <!-- Botón Editar -->
+    <button 
+        type="button" 
+        class="btn btn-outline-success btn-sm btn-modal" 
+        data-bs-toggle="modal" 
+        data-bs-target="#mainModal" 
+        data-url="editar_provedor.php" 
+        data-id="<?= $proveedor->proveedor_id ?>">
+        <i class="fa-solid fa-pen"></i>
+    </button>
 
-                                    <!-- Botón Eliminar -->
-                                    <button 
-                                        class="btn btn-danger btn-sm btn-modal" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#mainModal" 
-                                        data-url="eliminar_provedor.php" 
-                                        data-id="<?= $proveedor->proveedor_id ?>">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </button>
-                                </td>
+    <!-- Botón Eliminar -->
+    <button 
+        type="button" 
+        class="btn btn-outline-danger btn-sm btn-modal" 
+        data-bs-toggle="modal" 
+        data-bs-target="#mainModal" 
+        data-url="eliminar_provedor.php" 
+        data-id="<?= $proveedor->proveedor_id ?>">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
