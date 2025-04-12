@@ -16,6 +16,7 @@ class Conexion {
                 PDO::ATTR_EMULATE_PREPARES => false,
                  
             ]);
+            
             return $this->pdo;
             
         } catch (PDOException $e) {
