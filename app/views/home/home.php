@@ -1,37 +1,25 @@
-<!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\home\index.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELITE</title>
-    
-    <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    
-<?php include_once '../layouts/nav.php'; ?>
+
 <div id="carouselExample" class="carousel slide mt-4" data-bs-ride="carousel">
     <div class="carousel-inner text-center" style="background-color: #000;"> <!-- Fondo opcional -->
         <!-- Imagen 1 -->
         <div class="carousel-item active">
-            <img src="../../../public/img/imagen1.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 1">
+            <img src="/web-project-php/public/img/imagen1.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 1">
         </div>
         <!-- Imagen 2 -->
         <div class="carousel-item">
-            <img src="../../../public/img/imagen2.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 2">
+            <img src="/web-project-php/public/img/imagen2.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 2">
         </div>
         <!-- Imagen 3 -->
         <div class="carousel-item">
-            <img src="../../../public/img/imagen3.webp" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 3">
+            <img src="/web-project-php/public/img/imagen3.webp" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 3">
         </div>
         <!-- Imagen 4 -->
         <div class="carousel-item">
-            <img src="../../../public/img/imagen4.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 4">
+            <img src="/web-project-php/public/img/imagen4.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 4">
         </div>
         <!-- Imagen 5 -->
         <div class="carousel-item">
-            <img src="../../../public/img/imagen5.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 5">
+            <img src="/web-project-php/public/img/imagen5.png" class="d-block mx-auto" style="object-fit: contain; height: 400px; width: 100%;" alt="Imagen 5">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -43,7 +31,6 @@
         <span class="visually-hidden">Siguiente</span>
     </button>
 </div>
-
 
 
     <!-- Sección Misión -->
@@ -119,12 +106,3 @@
     </div>
 </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 ZAPATILLAS ELITE SAC.</p>
-    </footer>
-
-    <!-- Bootstrap JS (local) -->
-    <script src="../../../public/css/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
