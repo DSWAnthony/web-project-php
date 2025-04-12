@@ -14,7 +14,7 @@
                     <a class="nav-link" href="/tabla2">Tabla 2</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tabla3">Tabla 3</a>
+                    <a class="nav-link" href="../../views/provedor/listar_provedor.php">Provedor</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/tabla4">Tabla 4</a>

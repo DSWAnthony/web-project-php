@@ -1,0 +1,121 @@
+<?php
+require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea correcta
+
+ // Obtiene los proveedores desde la base de datos
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proveedores</title>
+    <!-- Bootstrap CSS -->
+    <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>
+
+        <nav>
+        <div class="d-flex justify-content-center mb-4">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <!-- Botón Registrar -->
+                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="registrar_provedor.php">
+                    <i class="fas fa-plus"></i> Registrar
+                </button>
+                <!-- Botón Consultar -->
+                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="consultar_provedor.php">
+                    <i class="fas fa-search"></i> Consultar
+                </button>
+                <!-- Botón Filtrar -->
+                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="filtrar_provedor.php">
+                    <i class="fas fa-filter"></i> Filtrar
+                </button>
+            </div>
+        </div>
+        </nav>
+        <!-- Tabla de proveedores -->
+        <div class="d-flex justify-content-center">
+            <div class="table-responsive" style="min-width: 600px;">
+                <table class="table table-bordered table-striped mt-4">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($proveedores as $proveedor): ?>
+                            <tr>
+                                <td><?= $proveedor->proveedor_id ?></td>
+                                <td><?= $proveedor->nombre ?></td>
+                                <td><?= $proveedor->telefono ?></td>
+                                <td>
+                                    <!-- Botón Info -->
+                                    <button 
+                                        class="btn btn-info btn-sm btn-modal" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mainModal" 
+                                        data-url="mostrar_provedor.php" 
+                                        data-id="<?= $proveedor->proveedor_id ?>">
+                                        <i class="fas fa-info-circle"></i> Info
+                                    </button>
+
+                                    <!-- Botón Editar -->
+                                    <button 
+                                        class="btn btn-warning btn-sm btn-modal" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mainModal" 
+                                        data-url="editar_provedor.php" 
+                                        data-id="<?= $proveedor->proveedor_id ?>">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+
+                                    <!-- Botón Eliminar -->
+                                    <button 
+                                        class="btn btn-danger btn-sm btn-modal" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mainModal" 
+                                        data-url="eliminar_provedor.php" 
+                                        data-id="<?= $proveedor->proveedor_id ?>">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal principal -->
+    <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modalContent">
+                <!-- El contenido del modal se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (necesario para AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script para cargar contenido dinámico en el modal -->
+    <script>
+        $(document).on('click', '.btn-modal', function () {
+            const url = $(this).data('url'); // Obtener la URL del archivo a cargar
+            const id = $(this).data('id'); // Obtener el ID del proveedor (si existe)
+
+            // Cargar el contenido del modal desde el archivo correspondiente
+            $('#modalContent').load(url, { id: id });
+        });
+    </script>
+</body>
+</html>
