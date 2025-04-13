@@ -1,6 +1,6 @@
 <?php 
 
-include '../../config/conexion.php'; 
+require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea correcta
 
 $conexion = new Conexion();
 $pdo = $conexion->Conectar();
@@ -10,15 +10,6 @@ $stmt = $pdo->query($sql);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Ubicaciones</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-
-<?php include_once '../layouts/nav.php'; ?>
 <body class="bg-info-subtle">
 
 <div class="container mt-5">

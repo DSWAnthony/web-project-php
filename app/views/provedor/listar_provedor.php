@@ -4,22 +4,6 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
  // Obtiene los proveedores desde la base de datos
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Proveedores</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <!-- Bootstrap CSS -->
-    <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<?php
-require_once '../../views/layouts/nav.php'; // Asegúrate de que la ruta sea correcta
-
- // Obtiene los proveedores desde la base de datos
-?>
     <div class="container mt-5">
         <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>
 
