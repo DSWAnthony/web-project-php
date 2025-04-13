@@ -10,6 +10,7 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Proveedores</title>
+    <link rel="stylesheet" href="../../../public/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -19,23 +20,43 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
         <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>
 
         <nav>
-        <div class="d-flex justify-content-center mb-4">
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <!-- Botón Registrar -->
-                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="registrar_provedor.php">
-                    <i class="fas fa-plus"></i> Registrar
-                </button>
-                <!-- Botón Consultar -->
-                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="consultar_provedor.php">
-                    <i class="fas fa-search"></i> Consultar
-                </button>
-                <!-- Botón Filtrar -->
-                <button type="button" class="btn btn-outline-primary btn-modal" data-bs-toggle="modal" data-bs-target="#mainModal" data-url="filtrar_provedor.php">
-                    <i class="fas fa-filter"></i> Filtrar
-                </button>
-            </div>
+    <div class="d-flex justify-content-center mb-4">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <!-- Botón Registrar -->
+            <button 
+    type="button" 
+    class="btn btn-outline-primary btn-registrar" 
+    data-url="registrar_provedor.php" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="top" 
+    title="Registrar un nuevo proveedor">
+    <i class="fas fa-plus"></i> Registrar
+</button>
+
+<!-- Botón Consultar -->
+<button 
+    type="button" 
+    class="btn btn-outline-primary btn-consultar" 
+    data-url="consultar_provedor.php" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="top" 
+    title="Consultar un proveedor">
+    <i class="fas fa-search"></i> Consultar
+</button>
+
+<!-- Botón Filtrar -->
+<button 
+    type="button" 
+    class="btn btn-outline-primary btn-filtrar" 
+    data-url="filtrar_provedor.php" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="top" 
+    title="Filtrar proveedores">
+    <i class="fas fa-filter"></i> Filtrar
+</button>
         </div>
-        </nav>
+    </div>
+</nav>
         <!-- Tabla de proveedores -->
         <div class="d-flex justify-content-center">
             <div class="table-responsive" style="min-width: 600px;">
@@ -57,34 +78,28 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
                                 <td>
     <!-- Botón Info -->
     <button 
-        type="button" 
-        class="btn btn-outline-info btn-sm btn-modal" 
-        data-bs-toggle="modal" 
-        data-bs-target="#mainModal" 
-        data-url="mostrar_provedor.php" 
-        data-id="<?= $proveedor->proveedor_id ?>">
-        <i class="fa-solid fa-info"></i>
-    </button>
+    type="button" 
+    class="btn btn-outline-info btn-sm btn-info" 
+    data-id="<?= $proveedor->proveedor_id ?>" 
+    data-url="mostrar_provedor.php">
+    <i class="fas fa-info"></i>
+</button>
 
     <!-- Botón Editar -->
     <button 
         type="button" 
-        class="btn btn-outline-success btn-sm btn-modal" 
-        data-bs-toggle="modal" 
-        data-bs-target="#mainModal" 
-        data-url="editar_provedor.php" 
-        data-id="<?= $proveedor->proveedor_id ?>">
+        class="btn btn-outline-success btn-sm btn-editar" 
+        data-id="<?= $proveedor->proveedor_id ?>"
+        data-url="editar_provedor.php">
         <i class="fa-solid fa-pen"></i>
     </button>
 
     <!-- Botón Eliminar -->
     <button 
         type="button" 
-        class="btn btn-outline-danger btn-sm btn-modal" 
-        data-bs-toggle="modal" 
-        data-bs-target="#mainModal" 
-        data-url="eliminar_provedor.php" 
-        data-id="<?= $proveedor->proveedor_id ?>">
+        class="btn btn-outline-danger btn-sm btn-eliminar" 
+        data-id="<?= $proveedor->proveedor_id ?>"
+        data-url="eliminar_provedor.php">
         <i class="fa-solid fa-trash"></i>
     </button>
 </td>
@@ -122,3 +137,5 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
     </script>
 </body>
 </html>
+
+<css ?>

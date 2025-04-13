@@ -1,0 +1,35 @@
+/* Eliminar el estilo de "focus" */
+button:focus {
+    outline: none; /* Elimina el contorno */
+    box-shadow: none; /* Elimina el sombreado */
+    background-color: transparent; /* Fondo transparente */
+}
+
+/* Asegurar que el botón tenga un fondo transparente por defecto */
+.btn-outline-info {
+    background-color: transparent !important;
+    border-color: #0dcaf0; /* Color del borde */
+    color: #0dcaf0; /* Color del texto */
+}
+
+/* Cambiar el color al pasar el cursor (hover) */
+.btn-outline-info:hover {
+    background-color: #0dcaf0 !important; /* Fondo celeste */
+    color: #fff !important; /* Texto blanco */
+}
+
+/* Cambiar el color al hacer clic (active) */
+.btn-outline-info:active {
+    background-color: #0dcaf0 !important; /* Fondo celeste */
+    color: #fff !important; /* Texto blanco */
+    box-shadow: none !important; /* Sin sombra */
+}
+
+.modal-lg {
+    max-width: 90%; /* Ajusta el ancho del modal */
+}
+
+.modal-body {
+    max-height: 70vh; /* Limita la altura del contenido */
+    overflow-y: auto; /* Agrega scroll si el contenido es muy largo */
+}

@@ -57,24 +57,26 @@ class CRUDProveedor extends Conexion {
     }
 
     // Función para actualizar un proveedor
-    public function ActualizarProveedor($id, $contacto, $direccion, $email, $nombre, $telefono, $ruc) {
-        $cn = $this->Conectar();
-        $sql = "UPDATE proveedor 
-                SET contacto = :contacto, direccion = :direccion, email = :email, 
-                    nombre = :nombre, telefono = :telefono, ruc = :ruc 
-                WHERE proveedor_id = :id";
-        $stm = $cn->prepare($sql);
-        $stm->bindParam(':id', $id, PDO::PARAM_INT);
-        $stm->bindParam(':contacto', $contacto, PDO::PARAM_STR);
-        $stm->bindParam(':direccion', $direccion, PDO::PARAM_STR);
-        $stm->bindParam(':email', $email, PDO::PARAM_STR);
-        $stm->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-        $stm->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-        $stm->bindParam(':ruc', $ruc, PDO::PARAM_STR);
-        $resultado = $stm->execute();
-        $cn = null;
-        return $resultado;
-    }
+    public function ActualizarProveedor($id, $nombre, $contacto, $direccion, $email, $telefono, $ruc) {
+    $cn = $this->Conectar();
+    $sql = "UPDATE proveedor SET 
+                nombre = :nombre, 
+                contacto = :contacto, 
+                direccion = :direccion, 
+                email = :email, 
+                telefono = :telefono, 
+                ruc = :ruc 
+            WHERE proveedor_id = :id";
+    $stm = $cn->prepare($sql);
+    $stm->bindParam(':id', $id, PDO::PARAM_INT);
+    $stm->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+    $stm->bindParam(':contacto', $contacto, PDO::PARAM_STR);
+    $stm->bindParam(':direccion', $direccion, PDO::PARAM_STR);
+    $stm->bindParam(':email', $email, PDO::PARAM_STR);
+    $stm->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+    $stm->bindParam(':ruc', $ruc, PDO::PARAM_STR);
+    return $stm->execute();
+}
 
     // Función para eliminar un proveedor
     public function EliminarProveedor($id) {
