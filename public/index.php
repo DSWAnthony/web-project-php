@@ -1,10 +1,5 @@
 <?php
-// Your PHP code starts here
-
-echo "Hello, World!";
-
-// End of PHP code
+// Redirigir automáticamente a app/views/home/index.php
+header('Location: ../app/views/home/index.php');
+exit;
 ?>
-
-
-

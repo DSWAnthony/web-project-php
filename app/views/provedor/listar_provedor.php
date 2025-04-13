@@ -15,7 +15,11 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<?php
+require_once '../../views/layouts/nav.php'; // Asegúrate de que la ruta sea correcta
 
+ // Obtiene los proveedores desde la base de datos
+?>
     <div class="container mt-5">
         <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>
 
