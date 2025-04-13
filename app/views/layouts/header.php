@@ -17,6 +17,8 @@ include '../../config/conexion.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Archivo JavaScript personalizado -->
     <script src="/web-project-php/public/js/provedor.js"></script>
+    <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
