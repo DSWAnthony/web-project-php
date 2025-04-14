@@ -8,7 +8,7 @@ include '../../config/conexion.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo isset($title) ? $title : 'ELITE'; ?></title> 
+    <title><?php echo isset($title) ? $title : 'ELITE'; ?></title>
 
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -17,12 +17,10 @@ include '../../config/conexion.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Archivo JavaScript personalizado -->
     <script src="../../../public/js/provedor.js"></script>
-    <script src="../../../public/js/modelo.js"></script>
-    <script src="../../../public/js/categoria.js"></script>
-    <script src="../../../public/js/almacen.js"></script>
-    <script src="../../../public/js/zapatilla.js"></script>
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+ 
+
+
 </head>
 
 <!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
