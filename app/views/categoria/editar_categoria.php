@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/crud_categoria.php'; // Ajusta la ruta si es necesario
+require_once '../../models/crud_categoria.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Caso 1: Procesar la actualización
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Caso 2: Mostrar el formulario de edición
+    
     if (isset($_POST['id']) && is_numeric($_POST['id'])) {
         $id = (int) $_POST['id'];
         $crud = new CRUDCategoria();
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 .then(data => {
                     if (data.success) {
                         alert('Categoría actualizada correctamente');
-                        // location.reload(); // Actualiza la tabla si lo deseas
+                        
                     } else {
                         alert('Error al actualizar la categoría');
                     }

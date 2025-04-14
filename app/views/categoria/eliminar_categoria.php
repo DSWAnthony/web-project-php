@@ -1,5 +1,5 @@
 <?php 
-require_once '../../models/crud_categoria.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../models/crud_categoria.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificar que se reciba el ID de la categoría

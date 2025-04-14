@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/crud_categoria.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../models/crud_categoria.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nombre'])) {
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
             </thead>
             <tbody id="tablaResultados">
-                <!-- Resultados dinámicos -->
+                
             </tbody>
         </table>
     </div>
@@ -91,7 +91,7 @@ $(document).ready(function () {
     });
 });
 
-// Función para mostrar la descripción
+
 function mostrarDescripcion(descripcion) {
     const contenido = `<div class="alert alert-info"><strong>Descripción:</strong> ${descripcion}</div>`;
     const modal = `
@@ -111,7 +111,7 @@ function mostrarDescripcion(descripcion) {
         </div>
     `;
 
-    // Eliminar modal anterior si existe
+   
     $('#modalDescripcion').remove();
     $('body').append(modal);
     const nuevoModal = new bootstrap.Modal(document.getElementById('modalDescripcion'));
