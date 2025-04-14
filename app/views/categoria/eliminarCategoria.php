@@ -1,10 +1,9 @@
 <?php
 require_once '../../config/conexion.php'; 
 
-// Obtener el ID de la URL
+
 $id = $_GET['id'];
 
-// Crear una instancia de la clase Conexion
 $conexion = new Conexion();
 $conn = $conexion->Conectar();
 
@@ -15,9 +14,8 @@ $stmt = $conn->prepare($sql);
 // Vinculamos el parámetro de la consulta (de tipo entero)
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-// Ejecutamos la consulta
 if ($stmt->execute()) {
-    // Redirección corregida
+
     header("Location: indexCategoria.php"); 
     exit();
 } else {

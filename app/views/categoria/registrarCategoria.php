@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':descripcion', $descripcion);
 
         if ($stmt->execute()) {
-            header("Location: indexCategoria.php"); // ✅ Corregido
+            header("Location: indexCategoria.php");
             exit();
         } else {
             echo "Error al registrar la categoría.";
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="descripcion" id="descripcion" class="form-control" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
-        <a href="indexCategoria.php" class="btn btn-secondary">Cancelar</a> <!-- ✅ Corregido -->
+        <a href="indexCategoria.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 

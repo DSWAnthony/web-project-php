@@ -1,8 +1,16 @@
 <?php
-require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../views/layouts/header.php';
+ // Asegúrate de que la ruta sea correcta
 
- // Obtiene los proveedores desde la base de datos
+require_once '../../models/crud_provedor.php';
+
+// Instancia del modeloin
+$modeloProvedor = new CRUDProveedor();
+
+// Obtiene los proveedores desde la base de datos
+$proveedores = $modeloProvedor->ListarProveedores();
 ?>
+<link rel="stylesheet" href="../../../public/css/style.css">
 
     <div class="container mt-5">
         <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>

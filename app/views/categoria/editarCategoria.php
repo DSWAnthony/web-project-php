@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="descripcion" class="form-control" required><?= htmlspecialchars($row['descripcion']) ?></textarea>
         </div>
         <button type="submit" class="btn btn-success">Guardar Cambios</button>
-        <a href="indexCategoria.php" class="btn btn-secondary">Cancelar</a> <!-- CORREGIDO -->
+        <a href="indexCategoria.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 </body>
