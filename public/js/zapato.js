@@ -72,21 +72,28 @@ $(document).on('click', '.btn-consultar', function () {
 });
 
 // Manejar clic en el botón "Filtrar"
-$(document).on('click', '.btn-filtrar', function () {
-    const url = $(this).data('url'); // Obtener la URL del archivo a cargar
+$(document).on('click', '#btnFiltrarZapato', function () {
+    const form = $('#formFiltrarZapato'); // Seleccionar el formulario
+    const formData = form.serialize(); // Serializar los datos del formulario
+    const resultados = $('#resultadosFiltro'); // Contenedor para los resultados
 
-    console.log('Cargando el formulario de filtrado desde:', url);
+    // Limpiar resultados previos
+    resultados.html('');
 
-    // Cargar el contenido del modal desde el archivo correspondiente
-    $('#modalContent').load(url, function (response, status, xhr) {
-        if (status === "error") {
-            console.error('Error al cargar el contenido:', xhr.status, xhr.statusText);
-            $('#modalContent').html('<p>Error al cargar el formulario de filtrado.</p>');
+    // Realizar la solicitud AJAX
+    $.ajax({
+        url: 'filtrar_zapato.php', // Archivo PHP que procesa el filtro
+        method: 'POST',
+        data: formData,
+        success: function (response) {
+            // Mostrar los resultados en el contenedor
+            resultados.html(response);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error en la solicitud AJAX:', status, error);
+            resultados.html('<div class="alert alert-danger">Hubo un error al filtrar las zapatillas. Por favor, inténtelo de nuevo.</div>');
         }
     });
-
-    // Mostrar el modal
-    $('#mainModal').modal('show');
 });
 
 // Manejar clic en el botón "Info"
@@ -199,9 +206,8 @@ $(document).on('click', '.btn-confirmar-eliminar', function () {
         $('#modalContent').html('<p>Error al intentar eliminar el zapato.</p>');
     });
 });
-
-$(document).on('click', '#btnConsultarModelo', function () {
-    const form = $('#formConsultarModelo'); // Seleccionar el formulario
+$(document).on('click', '#btnConsultarZapato', function () {
+    const form = $('#formConsultarZapato'); // Seleccionar el formulario
     const formData = form.serialize(); // Serializar los datos del formulario
     const resultados = $('#resultadosConsulta'); // Contenedor para los resultados
 
@@ -210,25 +216,28 @@ $(document).on('click', '#btnConsultarModelo', function () {
 
     // Realizar la solicitud AJAX
     $.ajax({
-        url: 'consultar_modelo.php', // Archivo PHP que procesa la consulta
+        url: 'consultar_zapato.php', // Archivo PHP que procesa la consulta
         method: 'POST',
         data: formData,
         dataType: 'json',
         success: function (response) {
             if (response.success) {
-                const modelo = response.data;
+                const zapato = response.data;
 
-                // Crear el card con los datos del modelo
+                // Crear el card con los datos del zapato
                 const card = `
                     <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Modelo: ${modelo.nombre}</h5>
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title">Zapato ID: ${zapato.zapato_id}</h5>
                         </div>
                         <div class="card-body">
-                            <p><strong>ID:</strong> ${modelo.modelo_id}</p>
-                            <p><strong>Descripción:</strong> ${modelo.descripcion}</p>
-                            <p><strong>Fecha de Creación:</strong> ${modelo.fecha_creacion}</p>
-                            <p><strong>Estado:</strong> ${modelo.estado}</p>
+                            <p><strong>Color:</strong> ${zapato.color}</p>
+                            <p><strong>Costo:</strong> $${parseFloat(zapato.costo).toFixed(2)}</p>
+                            <p><strong>Porcentaje de Ganancia:</strong> ${zapato.porcentaje_ganancia}%</p>
+                            <p><strong>Precio:</strong> $${parseFloat(zapato.precio).toFixed(2)}</p>
+                            <p><strong>SKU:</strong> ${zapato.sku}</p>
+                            <p><strong>Talla:</strong> ${zapato.talla}</p>
+                            <p><strong>Modelo:</strong> ${zapato.modelo_nombre}</p>
                         </div>
                     </div>
                 `;
@@ -242,7 +251,56 @@ $(document).on('click', '#btnConsultarModelo', function () {
         },
         error: function (xhr, status, error) {
             console.error('Error en la solicitud AJAX:', status, error);
-            resultados.html('<div class="alert alert-danger">Hubo un error al consultar el modelo. Por favor, inténtelo de nuevo.</div>');
+            resultados.html('<div class="alert alert-danger">Hubo un error al consultar el zapato. Por favor, inténtelo de nuevo.</div>');
         }
     });
+});
+
+
+$(document).on('click', '.btn-info', function () {
+    const id = $(this).data('id'); // Obtener el ID del zapato
+    const url = $(this).data('url'); // Obtener la URL del archivo
+    console.log('Botón Info presionado. ID:', id, 'URL:', url);
+
+    // Mostrar el modal y cargar el contenido
+    $('#mainModal').modal('show'); // Mostrar el modal
+    $('#modalContent').html('<p>Cargando información del zapato...</p>');
+
+    // Cargar el contenido del archivo correspondiente
+    $.post(url, { id: id }, function (data) {
+        $('#modalContent').html(data); // Cargar el contenido recibido en el modal
+    }).fail(function () {
+        $('#modalContent').html('<p>Error al cargar la información del zapato.</p>');
+    });
+});
+$(document).on('click', '.btn-eliminar', function () {
+    const id = $(this).data('id'); // Obtener el ID del zapato
+    const url = $(this).data('url'); // Obtener la URL del archivo
+    console.log('Botón Eliminar presionado. ID:', id, 'URL:', url);
+
+    // Mostrar el modal con un diseño mejorado
+    $('#mainModal').modal('show'); // Mostrar el modal
+    $('#modalContent').html(`
+        <div class="text-center">
+            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+            <h4 class="mt-3">¿Estás seguro?</h4>
+            <p>Esta acción eliminará permanentemente el zapato con ID: <strong>${id}</strong>.</p>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-danger btn-confirmar-eliminar me-2" data-id="${id}" data-url="${url}">
+                <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+                <i class="fas fa-times"></i> Cancelar
+            </button>
+        </div>
+    `);
+});
+
+$(document).on('click', '.btn-info', function () {
+    console.log('Evento del botón Info activado.');
+});
+
+$(document).on('click', '.btn-eliminar', function () {
+    console.log('Evento del botón Eliminar activado.');
 });

@@ -26,10 +26,21 @@ public function ListarZapatillas()
 }
 
 // Buscar zapato por ID
+
 public function BuscarZapatoPorId($id)
 {
-    $sql = "SELECT z.zapato_id, z.color, z.costo, z.porcentaje_ganancia, z.precio, z.sku, z.talla, z.modelo_id
+    $sql = "SELECT 
+                z.zapato_id, 
+                z.color, 
+                z.costo, 
+                z.porcentaje_ganancia, 
+                z.precio, 
+                z.sku, 
+                z.talla, 
+                z.modelo_id, 
+                m.nombre AS modelo_nombre
             FROM zapato z
+            INNER JOIN modelo m ON z.modelo_id = m.modelo_id
             WHERE z.zapato_id = :zapato_id";
     $stmt = $this->conn->prepare($sql);
     $stmt->bindParam(':zapato_id', $id, PDO::PARAM_INT);
@@ -106,22 +117,27 @@ public function RegistrarZapato($color, $costo, $porcentaje_ganancia, $sku, $tal
     }
 
     // Filtrar zapatillas por color
-public function FiltrarZapatillasPorColor($color)
-{
-    try {
-        $sql = "SELECT zapato_id, color, costo, porcentaje_ganancia, precio, sku, talla, modelo_id 
-                FROM zapato 
-                WHERE color LIKE :color";
+
+
+    public function FiltrarZapatosPorColor($color)
+    {
+        $sql = "SELECT 
+                    z.zapato_id, 
+                    z.color, 
+                    z.costo, 
+                    z.precio, 
+                    z.sku, 
+                    z.talla, 
+                    m.nombre AS modelo_nombre
+                FROM zapato z
+                INNER JOIN modelo m ON z.modelo_id = m.modelo_id
+                WHERE z.color LIKE :color";
         $stmt = $this->conn->prepare($sql);
-        $color = '%' . $color . '%';
+        $color = '%' . $color . '%'; // Agregar comodines para búsqueda parcial
         $stmt->bindParam(':color', $color, PDO::PARAM_STR);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    } catch (PDOException $e) {
-        error_log($e->getMessage());
-        return false;
+        return $stmt->fetchAll(PDO::FETCH_OBJ); // Devolver un arreglo de objetos
     }
-}
 
 public function ListarModelos()
 {

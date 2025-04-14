@@ -78,7 +78,7 @@ $zapatillas = $modeloZapato->ListarZapatillas();
                                 <!-- Botón Información -->
                                 <button 
                                     type="button" 
-                                    class="btn btn-outline-info btn-sm btn-modal" 
+                                    class="btn btn-outline-info btn-sm btn-info" 
                                     data-id="<?= $zapato->zapato_id ?>" 
                                     data-url="mostrar_zapato.php">
                                     <i class="fas fa-info"></i>
@@ -96,7 +96,7 @@ $zapatillas = $modeloZapato->ListarZapatillas();
                                 <!-- Botón Eliminar -->
                                 <button 
                                     type="button" 
-                                    class="btn btn-outline-danger btn-sm btn-modal" 
+                                    class="btn btn-outline-danger btn-sm btn-eliminar" 
                                     data-id="<?= $zapato->zapato_id ?>" 
                                     data-url="eliminar_zapato.php">
                                     <i class="fa-solid fa-trash"></i>
