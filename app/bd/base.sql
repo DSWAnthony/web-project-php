@@ -355,3 +355,7 @@ ALTER TABLE detalle_entrada
   ADD CONSTRAINT FK3dhujupnk5apy9l3ccr6s4tll FOREIGN KEY (zapato_id) REFERENCES zapato (zapato_id) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT FK5n6yil44smxfey7c9prc3h410 FOREIGN KEY (ubicacion_id) REFERENCES ubicacion_almacen (ubicacion_id) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT FKlab3gmfvasge851t36uvs4e82 FOREIGN KEY (entrada_id) REFERENCES entrada (entrada_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+  ALTER TABLE categoria
+ADD descripcion TEXT DEFAULT NULL AFTER nombre;
