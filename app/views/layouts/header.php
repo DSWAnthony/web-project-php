@@ -17,6 +17,10 @@ include '../../config/conexion.php';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Archivo JavaScript personalizado -->
     <script src="../../../public/js/provedor.js"></script>
+    <script src="../../../public/js/modelo.js"></script>
+    <script src="../../../public/js/categoria.js"></script>
+    <script src="../../../public/js/almacen.js"></script>
+    <script src="../../../public/js/zapatilla.js"></script>
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
@@ -43,7 +47,7 @@ include '../../config/conexion.php';
                     <a class="nav-link" href="../../views/categoria/listar_categoria.php">Categorías</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tabla5">Tabla 5</a>
+                    <a class="nav-link" href="../../views/modelo/listar_modelo.php">Modelo</a>
                 </li>
             </ul>
         </div>
