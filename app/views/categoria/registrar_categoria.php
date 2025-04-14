@@ -1,6 +1,6 @@
 <?php 
 require_once '../../models/crud_categoria.php';
-require_once '../../config/conexion.php'; // Ajustá el path según tu estructura real
+require_once '../../config/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nombre'], $_POST['descripcion'])) {
@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!-- Modal HTML -->
 <div class="modal-header">
     <h5 class="modal-title">Registrar Nueva Categoría</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Función genérica para cargar modales
+
     function cargarModal(url, data = {}) {
         console.log('Cargando modal desde:', url, 'con datos:', data);
         $('#modalContent').html('<p class="text-center">Cargando...</p>');
@@ -19,7 +19,7 @@ $(document).ready(function () {
         });
     }
 
-    // Abrir modal para registrar, consultar, editar
+    
     $(document).on('click', '.btn-registrar-categoria, .btn-consultar-categoria, .btn-editar-categoria', function () {
         const url = $(this).data('url');
         const id = $(this).data('id');
@@ -27,7 +27,7 @@ $(document).ready(function () {
         cargarModal(url, data);
     });
 
-    // Mostrar confirmación para eliminar
+
     $(document).on('click', '.btn-eliminar-categoria', function () {
         const id = $(this).data('id');
         const url = $(this).data('url');
@@ -51,7 +51,7 @@ $(document).ready(function () {
         $('#mainModal').modal('show');
     });
 
-    // Confirmar eliminación
+
     $(document).on('click', '.btn-confirmar-eliminar-categoria', function () {
         const id = $(this).data('id');
         const url = $(this).data('url');
@@ -108,10 +108,10 @@ $(document).ready(function () {
         });
     });
 
-    // ✅ CONSULTAR CATEGORÍA - Ruta corregida
+
     $(document).on('click', '#btnConsultarCategoria', function () {
         const formData = $('#formConsultarCategoria').serialize();
-        const url = 'views/categoria/consultar_categoria.php'; // <- Ruta corregida
+        const url = 'views/categoria/consultar_categoria.php';
     
         $.post(url, formData, function (response) {
             try {
@@ -138,7 +138,7 @@ $(document).ready(function () {
     });
 });
 
-// Mostrar descripción en modal separado
+
 function mostrarDescripcion(descripcion) {
     const modalHtml = `
         <div class="modal fade" id="modalDescripcion" tabindex="-1">
@@ -161,7 +161,6 @@ function mostrarDescripcion(descripcion) {
         </div>
     `;
     
-    $('#modalDescripcion').remove(); // eliminar modal anterior si existe
-    $('body').append(modalHtml);
+    $('#modalDescripcion').remove(); 
     new bootstrap.Modal(document.getElementById('modalDescripcion')).show();
 }

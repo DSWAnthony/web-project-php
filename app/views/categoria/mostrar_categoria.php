@@ -1,5 +1,5 @@
 <?php 
-require_once '../../models/crud_categoria.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../models/crud_categoria.php';
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];

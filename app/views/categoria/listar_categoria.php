@@ -1,6 +1,6 @@
 <?php
 require_once '../../views/layouts/header.php';
-require_once '../../models/crud_categoria.php'; // Ruta correcta al modelo de categoría
+require_once '../../models/crud_categoria.php';
 
 $modeloCategoria = new CRUDCategoria();
 $categorias = $modeloCategoria->ListarCategorias();
