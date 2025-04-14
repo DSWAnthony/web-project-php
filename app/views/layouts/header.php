@@ -40,7 +40,7 @@ include '../../config/conexion.php';
                     <a class="nav-link" href="../../views/provedor/listar_provedor.php">Provedor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../views/categoria/indexCategoria.php">Categorías</a>
+                    <a class="nav-link" href="../../views/categoria/listar_categoria.php">Categorías</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/tabla5">Tabla 5</a>
