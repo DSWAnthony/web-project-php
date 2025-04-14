@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id']) && is_numeric($_POST['id'])) {
         $id = (int) $_POST['id'];
         $crud = new CRUDCategoria();
-        $categoria = $crud->BuscarCategoriaPorId($id);
+        $categoria = $crud->BuscarCategoriaId($id);
 
         if ($categoria): ?>
             <div class="modal-header">

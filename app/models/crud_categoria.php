@@ -16,7 +16,7 @@ class CRUDCategoria extends Conexion {
     }
 
     // Función para buscar una categoría por su ID
-    public function BuscarCategoriaPorId($id) {
+        public function BuscarCategoriaId($id) {
         $cn = $this->Conectar();
         $sql = "SELECT * FROM categoria WHERE categoria_id = :id";
         $stm = $cn->prepare($sql);

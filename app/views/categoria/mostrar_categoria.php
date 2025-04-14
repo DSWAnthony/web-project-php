@@ -4,7 +4,7 @@ require_once '../../models/crud_categoria.php'; // Asegúrate de que la ruta sea
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
     $crud = new CRUDCategoria();
-    $categoria = $crud->BuscarCategoriaPorId($id);
+    $categoria = $crud->BuscarCategoriaId($id);
 
     if ($categoria): ?>
         <div class="modal-header">

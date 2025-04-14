@@ -13,7 +13,7 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
     
     <!-- Contenido del Hero -->
     <div class="container position-relative" style="z-index: 2;">
-        <h1 class="display-4 fw-bold">Bienvenidos a Sneaker Store</h1>
+        <h1 class="display-4 fw-bold">Bienvenidos a ZAPTILLAS ELITE S.A.C</h1>
         <p class="lead">Encuentra el par perfecto para destacar tu estilo.</p>
         
         <!-- Carrusel de Zapatillas sin fondo duplicado -->
