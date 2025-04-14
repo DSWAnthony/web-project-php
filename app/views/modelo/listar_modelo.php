@@ -122,6 +122,7 @@ $modelos = $modelo->ListarModelos();
 
 <!-- Script para cargar contenido dinámico en el modal -->
 <script>
+    
     $(document).on('click', '.btn-modal', function () {
         const url = $(this).data('url'); // Obtener la URL del archivo a cargar
         const id = $(this).data('id'); // Obtener el ID del modelo (si existe)

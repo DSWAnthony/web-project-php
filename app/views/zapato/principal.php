@@ -5,7 +5,7 @@ require_once '../../models/crud_zapato.php';
 // Instancia del modelo
 $modeloZapato = new CRUDZapato();
 
-// Obtener los zapatos desde la base de datos
+// Obtener todos los zapatos
 $zapatillas = $modeloZapato->ListarZapatillas();
 ?>
 <link rel="stylesheet" href="../../../public/css/style.css">
@@ -16,32 +16,35 @@ $zapatillas = $modeloZapato->ListarZapatillas();
     <nav>
         <div class="d-flex justify-content-center mb-4">
             <div class="btn-group" role="group" aria-label="Botones Zapatillas">
-                <button
-                    type="button"
-                    class="btn btn-outline-primary btn-zapato-registrar"
-                    data-url="registrar_zapato.php"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Registrar una nueva zapatilla">
+                <!-- Botón Registrar -->
+                <button 
+                    type="button" 
+                    class="btn btn-outline-primary btn-registrar" 
+                    data-url="registrar_zapato.php" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Registrar un nuevo zapato">
                     <i class="fas fa-plus"></i> Registrar
                 </button>
 
-                <button
-                    type="button"
-                    class="btn btn-outline-primary btn-zapato-consultar"
-                    data-url="consultar_zapato.php"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Consultar zapatillas">
+                <!-- Botón Consultar -->
+                <button 
+                    type="button" 
+                    class="btn btn-outline-primary btn-consultar" 
+                    data-url="consultar_zapato.php" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Consultar un zapato">
                     <i class="fas fa-search"></i> Consultar
                 </button>
 
-                <button
-                    type="button"
-                    class="btn btn-outline-primary btn-zapato-filtrar"
-                    data-url="filtrar_zapato.php"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
+                <!-- Botón Filtrar -->
+                <button 
+                    type="button" 
+                    class="btn btn-outline-primary btn-filtrar" 
+                    data-url="filtrar_zapato.php" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
                     title="Filtrar zapatillas">
                     <i class="fas fa-filter"></i> Filtrar
                 </button>
@@ -56,9 +59,9 @@ $zapatillas = $modeloZapato->ListarZapatillas();
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Color</th>
-                        <th>Precio</th>
-                        <th>SKU</th>
+                        <th>Modelo</th>
+                        <th>Precio Venta</th>
+                        
                         <th>Talla</th>
                         <th>Acciones</th>
                     </tr>
@@ -67,37 +70,38 @@ $zapatillas = $modeloZapato->ListarZapatillas();
                     <?php foreach ($zapatillas as $zapato): ?>
                         <tr>
                             <td><?= $zapato->zapato_id ?></td>
-                            <td><?= $zapato->color ?></td>
-                            <td>$<?= number_format($zapato->precio_comercial, 2) ?></td>
-                            <td><?= $zapato->sku ?></td>
+                            <td><?= $zapato->modelo_nombre ?></td>
+                            <td>$<?= number_format($zapato->precio, 2) ?></td>
+                            
                             <td><?= $zapato->talla ?></td>
                             <td>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-info btn-sm btn-zapato-info btn-modal"
-                                    data-id="<?= $zapato->zapato_id ?>"
+                                <!-- Botón Información -->
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-info btn-sm btn-modal" 
+                                    data-id="<?= $zapato->zapato_id ?>" 
                                     data-url="mostrar_zapato.php">
                                     <i class="fas fa-info"></i>
                                 </button>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-success btn-sm btn-zapato-editar btn-modal"
-                                    data-id="<?= $zapato->zapato_id ?>"
+                                <!-- Botón Editar -->
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-success btn-sm btn-editar" 
+                                    data-id="<?= $zapato->zapato_id ?>" 
                                     data-url="editar_zapato.php">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
                                 <!-- Botón Eliminar -->
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm btn-zapato-eliminar"
-                                    data-id="<?= $zapato->zapato_id ?>"
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-danger btn-sm btn-modal" 
+                                    data-id="<?= $zapato->zapato_id ?>" 
                                     data-url="eliminar_zapato.php">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
-
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -106,36 +110,29 @@ $zapatillas = $modeloZapato->ListarZapatillas();
     </div>
 </div>
 
+<!-- Modal principal -->
 <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" id="modalContent">
-            <!-- Aquí se cargará el formulario de edición -->
+            <!-- El contenido del modal se cargará dinámicamente -->
         </div>
     </div>
 </div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- jQuery (para AJAX) -->
+<!-- jQuery (necesario para AJAX) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Incluir script JS -->
+<script src="../../../public/js/zapato.js"></script>
 <script>
-    // Script para cargar contenido dinámico en el modal
-    $(document).on('click', '.btn-modal', function() {
+    $(document).on('click', '.btn-modal', function () {
         const url = $(this).data('url'); // Obtener la URL del archivo a cargar
         const id = $(this).data('id'); // Obtener el ID del zapato (si existe)
 
         // Cargar el contenido del modal desde el archivo correspondiente
-        $('#modalContent').load(url, {
-            id: id
-        });
+        $('#modalContent').load(url, { id: id });
     });
 </script>
-
-<script src="../../../public/js/zapato.js"></script>
-
-
 </body>
-
 </html>

@@ -3,27 +3,20 @@ require_once '../../models/crud_zapato.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Actualizar zapato
-    if (isset($_POST['zapato_id'], $_POST['color'], $_POST['precio_comercial'], $_POST['sku'], $_POST['talla'])) {
+    if (isset($_POST['zapato_id'], $_POST['color'], $_POST['costo'], $_POST['porcentaje_ganancia'], $_POST['sku'], $_POST['talla'], $_POST['modelo_id'])) {
         $id = (int) $_POST['zapato_id'];
-        $color = $_POST['color'];
-        $precio_comercial = $_POST['precio_comercial'];
-        $sku = $_POST['sku'];
-        $talla = $_POST['talla'];
-        $modelo_id = 2; // Modelo fijo (Referencia a la tabla modelo)
-
-        // Validación de modelo_id (si fuera necesario, pero en este caso se mantiene fijo)
-        // En este caso, dado que se asigna un modelo fijo (modelo_id = 2), no hace falta verificar su existencia
-        // Si quieres verificar que el modelo existe, podrías hacer una consulta a la tabla 'modelo' para asegurarte.
-        // $crud = new CRUDModelo();
-        // if (!$crud->existeModelo($modelo_id)) {
-        //     echo json_encode(['success' => false, 'message' => 'Modelo no válido.']);
-        //     exit;
-        // }
+        $color = trim($_POST['color']);
+        $costo = floatval($_POST['costo']);
+        $porcentaje_ganancia = floatval($_POST['porcentaje_ganancia']);
+        $sku = trim($_POST['sku']);
+        $talla = trim($_POST['talla']);
+        $modelo_id = (int) $_POST['modelo_id'];
 
         // Instanciar el CRUD
         $crud = new CRUDZapato();
-        $resultado = $crud->ActualizarZapato($id, $color, $precio_comercial, $sku, $talla, $modelo_id);
+        $resultado = $crud->ActualizarZapato($id, $color, $costo, $porcentaje_ganancia, $sku, $talla, $modelo_id);
 
+        // Respuesta en formato JSON
         if ($resultado) {
             echo json_encode(['success' => true, 'message' => 'Zapato actualizado correctamente.']);
         } else {
@@ -37,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = (int) $_POST['id'];
         $crud = new CRUDZapato();
         $zapato = $crud->BuscarZapatoPorId($id);
+
+        // Obtener la lista de modelos
+        $modelos = $crud->ListarModelos(); // Método que devuelve todos los modelos
 
         if ($zapato): ?>
             <div class="modal-header">
@@ -52,8 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" class="form-control" id="color" name="color" value="<?= htmlspecialchars($zapato->color) ?>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="precio_comercial" class="form-label">Precio Comercial</label>
-                        <input type="number" step="0.01" class="form-control" id="precio_comercial" name="precio_comercial" value="<?= htmlspecialchars($zapato->precio_comercial) ?>" required>
+                        <label for="costo" class="form-label">Costo</label>
+                        <input type="number" step="0.01" class="form-control" id="costo" name="costo" value="<?= htmlspecialchars($zapato->costo) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="porcentaje_ganancia" class="form-label">Porcentaje de Ganancia</label>
+                        <input type="number" step="0.01" class="form-control" id="porcentaje_ganancia" name="porcentaje_ganancia" value="<?= htmlspecialchars($zapato->porcentaje_ganancia) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="sku" class="form-label">SKU</label>
@@ -61,7 +61,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="mb-3">
                         <label for="talla" class="form-label">Talla</label>
-                        <input type="number" step="0.1" class="form-control" id="talla" name="talla" value="<?= htmlspecialchars($zapato->talla) ?>" required>
+                        <input type="text" class="form-control" id="talla" name="talla" value="<?= htmlspecialchars($zapato->talla) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelo_id" class="form-label">Modelo</label>
+                        <select class="form-control" id="modelo_id" name="modelo_id" required>
+                        <?php if (!empty($modelos)): ?>
+    <?php foreach ($modelos as $modelo): ?>
+        <option value="<?= htmlspecialchars($modelo->modelo_id) ?>" <?= $modelo->modelo_id == $zapato->modelo_id ? 'selected' : '' ?>>
+            <?= htmlspecialchars($modelo->nombre) ?>
+        </option>
+    <?php endforeach; ?>
+<?php else: ?>
+    <option value="">No hay modelos disponibles</option>
+<?php endif; ?>
+                        </select>
                     </div>
                 </form>
             </div>
