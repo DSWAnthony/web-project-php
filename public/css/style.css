@@ -33,3 +33,4 @@ button:focus {
     max-height: 70vh; /* Limita la altura del contenido */
     overflow-y: auto; /* Agrega scroll si el contenido es muy largo */
 }
+

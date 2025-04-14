@@ -8,7 +8,7 @@ include '../../config/conexion.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo isset($title) ? $title : 'Mi Aplicación'; ?></title> <!-- Usar una variable $title para el título específico de cada página -->
+    <title><?php echo isset($title) ? $title : 'ELITE'; ?></title> 
 
     <link href="/web-project-php/public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@ include '../../config/conexion.php';
     <!-- Archivo JavaScript personalizado -->
     <script src="/web-project-php/public/js/provedor.js"></script>
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    
 </head>
 
 <!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
