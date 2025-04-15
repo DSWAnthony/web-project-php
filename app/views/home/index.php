@@ -95,7 +95,7 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
                 <div class="card-body text-center">
                     <i class="fas fa-bolt fa-2x text-warning mb-3"></i>
                     <h5 class="card-title">Agilidad</h5>
-                    <p class="card-text">Respondemos rápido a las necesidades de nuestros clientes y del mercado.</p>
+                    <p class="card-text">Respondemos rapido a las necesidades de nuestros clientes y del mercado.</p>
                 </div>
             </div>
         </div>

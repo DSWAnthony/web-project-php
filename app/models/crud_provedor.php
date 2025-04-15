@@ -3,7 +3,7 @@
 require_once '../../config/conexion.php';// filepath: c:\xampp\htdocs\entregable\web-project-php\app\models\crud_proveedor.php
 class CRUDProveedor extends Conexion {
 
-    // Función para listar todos los proveedores
+    
     public function ListarProveedores() {
         $cn = $this->Conectar();
         $sql = "SELECT * FROM proveedor";
@@ -14,7 +14,7 @@ class CRUDProveedor extends Conexion {
         return $proveedores;
     }
 
-    // Función para buscar un proveedor por su ID
+   
     public function BuscarProveedorPorId($id) {
         $cn = $this->Conectar();
         $sql = "SELECT * FROM proveedor WHERE proveedor_id = :id";
@@ -26,8 +26,7 @@ class CRUDProveedor extends Conexion {
         return $proveedor;
     }
 
-    // Función para filtrar proveedores por nombre
-    public function FiltrarProveedoresPorNombre($nombre) {
+      public function FiltrarProveedoresPorNombre($nombre) {
         $cn = $this->Conectar();
         $sql = "SELECT * FROM proveedor WHERE nombre LIKE :nombre";
         $stm = $cn->prepare($sql);
@@ -39,7 +38,7 @@ class CRUDProveedor extends Conexion {
         return $proveedores;
     }
 
-    // Función para registrar un nuevo proveedor
+   
     public function RegistrarProveedor($contacto, $direccion, $email, $nombre, $telefono, $ruc) {
         $cn = $this->Conectar();
         $sql = "INSERT INTO proveedor (contacto, direccion, email, nombre, telefono, ruc) 
@@ -56,7 +55,7 @@ class CRUDProveedor extends Conexion {
         return $resultado;
     }
 
-    // Función para actualizar un proveedor
+   
     public function ActualizarProveedor($id, $nombre, $contacto, $direccion, $email, $telefono, $ruc) {
     $cn = $this->Conectar();
     $sql = "UPDATE proveedor SET 
