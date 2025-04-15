@@ -49,7 +49,7 @@ include '../../config/conexion.php';
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active fw-semibold" href="../../views/zapato/principal.php">
+                    <a class="nav-link  fw-semibold" href="../../views/zapato/principal.php">
                         <i class="fas fa-shoe-prints me-1"></i> Zapatillas
                     </a>
                 </li>
