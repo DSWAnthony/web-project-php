@@ -27,7 +27,6 @@ include '../../config/conexion.php';
 
 </head>
 
-<!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="../home/index.php">ELITE</a>
