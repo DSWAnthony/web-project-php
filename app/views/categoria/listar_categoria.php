@@ -8,7 +8,7 @@ $categorias = $modeloCategoria->ListarCategorias();
 <link rel="stylesheet" href="../../../public/css/style.css">
 
 <div class="container mt-5">
-    <h1><i class="fas fa-list"></i> Listado de Categorías</h1>
+    <h1><i class="fas fa-tags me-1"></i>Listado de Categorías</h1>
 
     <nav>
         <div class="d-flex justify-content-center mb-4">

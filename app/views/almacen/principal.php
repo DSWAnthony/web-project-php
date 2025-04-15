@@ -11,7 +11,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
 <link rel="stylesheet" href="../../../public/css/style.css">
 
 <div class="container mt-5">
-    <h1><i class="fas fa-map-marker-alt"></i> Listado de Ubicaciones del Almacén</h1>
+    <h1><i class="fas fa-warehouse me-1"></i> Listado de Ubicaciones del Almacén</h1>
 
     <nav>
         <div class="d-flex justify-content-center mb-4">
