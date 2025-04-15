@@ -1,6 +1,5 @@
 <?php
 require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea correcta
-<<<<<<< HEAD
 ?>
 
 <body style="background-color: #f4f4f4; margin: 0; padding: 0;">
@@ -58,7 +57,6 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
                             style="height: 180px; object-fit: contain;">
                     </div>
 
-=======
 ?><body style="background-color: #f4f4f4; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif;">
 
 
@@ -90,7 +88,6 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
                 </div>
                 <div class="carousel-item">
                     <img src="../../../public/img/imagen5.png" class="d-block w-100" alt="Modelo 5" style="height: 300px; object-fit: cover;">
->>>>>>> 2108e96009da811a0bcf1392bcc2e9c4c732be76
                 </div>
 
                 <!-- Controles del Carrusel -->
