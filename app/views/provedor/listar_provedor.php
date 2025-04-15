@@ -13,7 +13,7 @@ $proveedores = $modeloProvedor->ListarProveedores();
 <link rel="stylesheet" href="../../../public/css/style.css">
 
     <div class="container mt-5">
-        <h1><i class="fas fa-bars"></i> Listado de Proveedores</h1>
+        <h1><i class="fa-solid fa-caravan"></i> Listado de Proveedores</h1>
 
         <nav>
     <div class="d-flex justify-content-center mb-4">
