@@ -28,28 +28,46 @@ include '../../config/conexion.php';
 </head>
 
 <!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="../home/index.php">ELITE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top" style="background: linear-gradient(90deg, #111 0%, #222 100%);">
+    <div class="container-fluid px-4">
+        <!-- Marca -->
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="../home/index.php">
+            <i class="fas fa-shoe-prints me-2 text-warning"></i> ELITE
+        </a>
+
+        <!-- Botón responsive -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Enlaces -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="../../views/zapato/principal.php">Zapatillas</a>
+                    <a class="nav-link active fw-semibold" href="../../views/zapato/principal.php">
+                        <i class="fas fa-shoe-prints me-1"></i> Zapatos
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../views/almacen/principal.php">Almacen</a>
+                    <a class="nav-link fw-semibold" href="../../views/almacen/principal.php">
+                        <i class="fas fa-warehouse me-1"></i> Almacén
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../views/provedor/listar_provedor.php">Provedor</a>
+                    <a class="nav-link fw-semibold" href="../../views/provedor/listar_provedor.php">
+                        <i class="fas fa-truck me-1"></i> Proveedor
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../views/categoria/listar_categoria.php">Categorías</a>
+                    <a class="nav-link fw-semibold" href="../../views/categoria/listar_categoria.php">
+                        <i class="fas fa-tags me-1"></i> Categorías
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../views/modelo/listar_modelo.php">Modelo</a>
+                    <a class="nav-link fw-semibold" href="../../views/modelo/listar_modelo.php">
+                        <i class="fas fa-cubes me-1"></i> Modelo
+                    </a>
                 </li>
             </ul>
         </div>
