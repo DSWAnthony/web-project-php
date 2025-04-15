@@ -127,12 +127,17 @@ $zapatillas = $modeloZapato->ListarZapatillas();
 <script src="../../../public/js/zapato.js"></script>
 <script>
     $(document).on('click', '.btn-modal', function () {
-        const url = $(this).data('url'); // Obtener la URL del archivo a cargar
-        const id = $(this).data('id'); // Obtener el ID del zapato (si existe)
+        const url = $(this).data('url'); 
+        const id = $(this).data('id'); 
 
-        // Cargar el contenido del modal desde el archivo correspondiente
+       
         $('#modalContent').load(url, { id: id });
     });
 </script>
 </body>
+<footer>
+<?php
+require_once '../../views/layouts/footer.php'; // Asegúrate de que la ruta sea correcta
+?>
+</footer>
 </html>

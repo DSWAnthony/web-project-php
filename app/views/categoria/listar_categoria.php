@@ -124,4 +124,9 @@ $categorias = $modeloCategoria->ListarCategorias();
     });
 </script>
 </body>
+<footer>
+<?php
+require_once '../../views/layouts/footer.php'; // Asegúrate de que la ruta sea correcta
+?>
+</footer>
 </html>
