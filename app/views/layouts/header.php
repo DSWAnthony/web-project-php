@@ -27,12 +27,12 @@ include '../../config/conexion.php';
 
 </head>
 
-<!-- filepath: c:\xampp\htdocs\entregable\web-project-php\app\views\layouts\nav.php -->
 <nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top" style="background: linear-gradient(90deg, #111 0%, #222 100%);">
     <div class="container-fluid px-4">
-        <!-- Marca -->
+       
         <a class="navbar-brand d-flex align-items-center fw-bold" href="../home/index.php">
-            <i class="fas fa-shoe-prints me-2 text-warning"></i> ELITE
+            <img src="../../../public/img/imagen1.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle">
+            ELITE
         </a>
 
         <!-- Botón responsive -->
@@ -46,7 +46,7 @@ include '../../config/conexion.php';
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active fw-semibold" href="../../views/zapato/principal.php">
-                        <i class="fas fa-shoe-prints me-1"></i> Zapatos
+                        <i class="fas fa-shoe-prints me-1"></i> Zapatillas
                     </a>
                 </li>
                 <li class="nav-item">
