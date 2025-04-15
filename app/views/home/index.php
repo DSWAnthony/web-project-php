@@ -71,7 +71,7 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
   
     <div class="container position-relative z-1">
         <h1 class="display-4 fw-bold">ZAPATILLAS ELITE S.A.C</h1>
-        <p class="lead">Encuentra el par perfecto para destacar tu estilo.</p>
+        
 
         <!-- Carrusel -->
         <div id="carouselExample" class="carousel slide mx-auto my-4" style="max-width: 700px;" data-bs-ride="carousel">
