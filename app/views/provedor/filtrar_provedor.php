@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nombre'])) {
         $nombre = $_POST['nombre'];
 
-        // Instanciar el CRUD y filtrar los proveedores por nombre
+       
         $crud = new CRUDProveedor();
         $proveedores = $crud->FiltrarProveedoresPorNombre($nombre);
 
@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(['success' => false, 'message' => 'No se encontraron proveedores con ese nombre.']);
         }
-        exit; // Detener la ejecución para evitar contenido adicional
+        exit; 
     } else {
         echo json_encode(['success' => false, 'message' => 'No se proporcionó un nombre para buscar.']);
-        exit; // Detener la ejecución
+        exit; 
     }
 }
 
-// Caso 2: Mostrar el formulario de búsqueda
+
 ?>
 <div class="modal-header">
     <h5 class="modal-title">Filtrar Proveedores</h5>
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
     <div id="resultadosFiltro" class="mt-4">
-        <!-- Aquí se mostrarán los resultados de la búsqueda -->
+
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
             </thead>
             <tbody>
-                <!-- Los resultados se cargarán aquí dinámicamente -->
+           
             </tbody>
         </table>
     </div>

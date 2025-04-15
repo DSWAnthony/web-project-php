@@ -17,35 +17,40 @@ require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea 
         <p class="lead">Encuentra el par perfecto para destacar tu estilo.</p>
 
         <!-- Carrusel -->
-        <div id="carouselExample" class="carousel slide mx-auto my-4" style="max-width: 700px;" data-bs-ride="carousel">
-            <div class="carousel-inner rounded shadow">
-                <div class="carousel-item active">
-                    <img src="../../../public/img/imagen1.png" class="d-block w-100" alt="Modelo 1" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../public/img/imagen2.png" class="d-block w-100" alt="Modelo 2" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../public/img/imagen3.webp" class="d-block w-100" alt="Modelo 3" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../public/img/imagen4.png" class="d-block w-100" alt="Modelo 4" style="height: 300px; object-fit: cover;">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../public/img/imagen5.png" class="d-block w-100" alt="Modelo 5" style="height: 300px; object-fit: cover;">
-                </div>
-            </div>
-
-            <!-- Controles -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
+        <div id="carouselExample" class="carousel slide mx-auto my-4" style="max-width: 800px;" data-bs-ride="carousel">
+    <div class="carousel-inner rounded shadow">
+        <div class="carousel-item active">
+            <img src="../../../public/img/imagen1.png" class="d-block mx-auto" alt="Modelo 1"
+                 style="max-height: 400px; width: auto; max-width: 100%; object-fit: contain;">
         </div>
+        <div class="carousel-item">
+            <img src="../../../public/img/imagen2.png" class="d-block mx-auto" alt="Modelo 2"
+                 style="max-height: 400px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../public/img/imagen3.webp" class="d-block mx-auto" alt="Modelo 3"
+                 style="max-height: 400px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../public/img/imagen4.png" class="d-block mx-auto" alt="Modelo 4"
+                 style="max-height: 400px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../../public/img/imagen5.png" class="d-block mx-auto" alt="Modelo 5"
+                 style="max-height: 400px; width: auto; max-width: 100%; object-fit: contain;">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
 
        
         

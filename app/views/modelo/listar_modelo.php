@@ -2,10 +2,10 @@
 require_once '../../views/layouts/header.php'; // Asegúrate de que la ruta sea correcta
 require_once '../../models/crud_modelo.php';
 
-// Instancia del modelo
+
 $modelo = new CRUDModelo();
 
-// Obtiene los modelos desde la base de datos
+
 $modelos = $modelo->ListarModelos();
 ?>
 <link rel="stylesheet" href="../../../public/css/style.css">
@@ -16,7 +16,7 @@ $modelos = $modelo->ListarModelos();
     <nav>
         <div class="d-flex justify-content-center mb-4">
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <!-- Botón Registrar -->
+               
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-registrar" 
@@ -27,7 +27,7 @@ $modelos = $modelo->ListarModelos();
                     <i class="fas fa-plus"></i> Registrar
                 </button>
 
-                <!-- Botón Consultar -->
+            
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-consultar" 
@@ -38,7 +38,7 @@ $modelos = $modelo->ListarModelos();
                     <i class="fas fa-search"></i> Consultar
                 </button>
 
-                <!-- Botón Filtrar -->
+               
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-filtrar" 
@@ -52,7 +52,7 @@ $modelos = $modelo->ListarModelos();
         </div>
     </nav>
 
-    <!-- Tabla de modelos -->
+  
     <div class="d-flex justify-content-center">
         <div class="table-responsive" style="min-width: 600px;">
             <table class="table table-bordered table-striped mt-4">
@@ -71,7 +71,7 @@ $modelos = $modelo->ListarModelos();
                             <td><?= $modelo->nombre ?></td>
                             <td><?= $modelo->genero ?></td>
                             <td>
-                                <!-- Botón Info -->
+                               
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-info btn-sm btn-info" 
@@ -80,7 +80,7 @@ $modelos = $modelo->ListarModelos();
                                     <i class="fas fa-info"></i>
                                 </button>
 
-                                <!-- Botón Editar -->
+                                
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-success btn-sm btn-editar" 
@@ -89,7 +89,7 @@ $modelos = $modelo->ListarModelos();
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
-                                <!-- Botón Eliminar -->
+                            
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-danger btn-sm btn-eliminar" 
@@ -106,33 +106,30 @@ $modelos = $modelo->ListarModelos();
     </div>
 </div>
 
-<!-- Modal principal -->
+
 <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" id="modalContent">
-            <!-- El contenido del modal se cargará dinámicamente -->
+           
         </div>
     </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- jQuery (necesario para AJAX) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Script para cargar contenido dinámico en el modal -->
+
 <script>
     $(document).on('click', '.btn-modal', function () {
-        const url = $(this).data('url'); // Obtener la URL del archivo a cargar
-        const id = $(this).data('id'); // Obtener el ID del modelo (si existe)
+        const url = $(this).data('url'); 
+        const id = $(this).data('id'); 
 
-        // Cargar el contenido del modal desde el archivo correspondiente
         $('#modalContent').load(url, { id: id });
     });
 </script>
 </body>
 <footer>
 <?php
-require_once '../../views/layouts/footer.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../views/layouts/footer.php'; 
 ?>
 </footer>
 </html>

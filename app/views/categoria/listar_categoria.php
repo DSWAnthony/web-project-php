@@ -13,7 +13,6 @@ $categorias = $modeloCategoria->ListarCategorias();
     <nav>
         <div class="d-flex justify-content-center mb-4">
             <div class="btn-group" role="group" aria-label="Botones de acción">
-                <!-- Botón Registrar -->
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-registrar btn-modal" 
@@ -24,7 +23,6 @@ $categorias = $modeloCategoria->ListarCategorias();
                     <i class="fas fa-plus"></i> Registrar
                 </button>
 
-                <!-- Botón Consultar -->
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-consultar btn-modal" 
@@ -35,7 +33,6 @@ $categorias = $modeloCategoria->ListarCategorias();
                     <i class="fas fa-search"></i> Consultar
                 </button>
 
-                <!-- Botón Filtrar -->
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-filtrar btn-modal" 
@@ -49,7 +46,6 @@ $categorias = $modeloCategoria->ListarCategorias();
         </div>
     </nav>
 
-    <!-- Tabla de categorías -->
     <div class="d-flex justify-content-center">
         <div class="table-responsive" style="min-width: 600px;">
             <table class="table table-bordered table-striped mt-4">
@@ -66,7 +62,6 @@ $categorias = $modeloCategoria->ListarCategorias();
                             <td><?= $categoria->categoria_id ?></td>
                             <td><?= $categoria->nombre ?></td>
                             <td>
-                                <!-- Botón Info -->
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-info btn-sm btn-info" 
@@ -75,7 +70,6 @@ $categorias = $modeloCategoria->ListarCategorias();
                                     <i class="fas fa-info"></i>
                                 </button>
 
-                                <!-- Botón Editar -->
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-success btn-sm btn-editar" 
@@ -84,7 +78,6 @@ $categorias = $modeloCategoria->ListarCategorias();
                                     <i class="fas fa-pen"></i>
                                 </button>
 
-                                <!-- Botón Eliminar -->
                                 <button 
                                     type="button" 
                                     class="btn btn-outline-danger btn-sm btn-eliminar" 
@@ -101,11 +94,9 @@ $categorias = $modeloCategoria->ListarCategorias();
     </div>
 </div>
 
-<!-- Modal principal -->
 <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" id="modalContent">
-            <!-- El contenido del modal se carga dinámicamente -->
         </div>
     </div>
 </div>
@@ -114,7 +105,6 @@ $categorias = $modeloCategoria->ListarCategorias();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Script para cargar dinámicamente los modales -->
 <script>
     $(document).on('click', '.btn-modal', function () {
         const url = $(this).data('url');
@@ -126,7 +116,7 @@ $categorias = $modeloCategoria->ListarCategorias();
 </body>
 <footer>
 <?php
-require_once '../../views/layouts/footer.php'; // Asegúrate de que la ruta sea correcta
+require_once '../../views/layouts/footer.php'; 
 ?>
 </footer>
 </html>
