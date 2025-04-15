@@ -3,7 +3,7 @@ class Conexion {
     private $host = "localhost";
     private $db_nombre = "inventario"; 
     private $usuario = "root"; 
-    private $contrasena = "Xboxlive123"; 
+    private $contrasena = ""; 
     private $charset = "utf8mb4";
     private $pdo;
 
