@@ -3,7 +3,7 @@ require_once '../../models/crud_categoria.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nombre'])) {
-        $nombre = $_POST['nombre'];
+        $nombre = trim($_POST['nombre']); // Limpiar el nombre recibido
 
         $crud = new CRUDCategoria();
         $categorias = $crud->FiltrarCategoriasPorNombre($nombre);
@@ -37,13 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Acción</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody id="tablaResultados">
-                
+                <!-- Los resultados se cargarán aquí dinámicamente -->
             </tbody>
         </table>
     </div>
@@ -55,66 +54,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script>
 $(document).ready(function () {
+    // Manejar el clic en el botón "Buscar"
     $('#btnFiltrarCategoria').on('click', function () {
-        const formData = $('#formFiltrarCategoria').serialize();
+        const formData = $('#formFiltrarCategoria').serialize(); // Serializar los datos del formulario
 
+        // Realizar la solicitud AJAX
         $.ajax({
             type: 'POST',
-            url: 'filtrar_categoria.php',
+            url: 'filtrar_categoria.php', // Archivo PHP que procesa la búsqueda
             data: formData,
             dataType: 'json',
             success: function (response) {
                 const tabla = $('#tablaResultados');
-                tabla.empty();
+                tabla.empty(); // Limpiar resultados previos
 
                 if (response.success) {
+                    // Si se encontraron categorías, mostrarlas en la tabla
                     response.data.forEach(function (categoria) {
                         const fila = `
                             <tr>
-                                <td>${categoria.id_categoria}</td>
-                                <td>${categoria.nombre_categoria}</td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" onclick="mostrarDescripcion('${categoria.descripcion_categoria.replace(/'/g, "\\'")}')">Info</button>
-                                </td>
+                                <td>${categoria.nombre}</td>
+                                <td>${categoria.descripcion}</td>
                             </tr>
                         `;
                         tabla.append(fila);
                     });
                 } else {
-                    tabla.html(`<tr><td colspan="3" class="text-center">${response.message}</td></tr>`);
+                    // Si no se encontraron categorías, mostrar un mensaje
+                    tabla.html(`<tr><td colspan="2" class="text-center">${response.message}</td></tr>`);
                 }
             },
             error: function () {
-                $('#tablaResultados').html('<tr><td colspan="3" class="text-center text-danger">Error al procesar la solicitud.</td></tr>');
+                // Manejar errores en la solicitud AJAX
+                $('#tablaResultados').html('<tr><td colspan="2" class="text-center text-danger">Error al procesar la solicitud.</td></tr>');
             }
         });
     });
 });
-
-
-function mostrarDescripcion(descripcion) {
-    const contenido = `<div class="alert alert-info"><strong>Descripción:</strong> ${descripcion}</div>`;
-    const modal = `
-        <div class="modal fade" id="modalDescripcion" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Descripción de Categoría</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">${contenido}</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-   
-    $('#modalDescripcion').remove();
-    $('body').append(modal);
-    const nuevoModal = new bootstrap.Modal(document.getElementById('modalDescripcion'));
-    nuevoModal.show();
-}
 </script>

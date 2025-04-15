@@ -69,7 +69,7 @@ $categorias = $modeloCategoria->ListarCategorias();
                                 <!-- Botón Info -->
                                 <button 
                                     type="button" 
-                                    class="btn btn-outline-info btn-sm btn-modal" 
+                                    class="btn btn-outline-info btn-sm btn-info" 
                                     data-id="<?= $categoria->categoria_id ?>" 
                                     data-url="mostrar_categoria.php">
                                     <i class="fas fa-info"></i>
@@ -78,7 +78,7 @@ $categorias = $modeloCategoria->ListarCategorias();
                                 <!-- Botón Editar -->
                                 <button 
                                     type="button" 
-                                    class="btn btn-outline-success btn-sm btn-modal" 
+                                    class="btn btn-outline-success btn-sm btn-editar" 
                                     data-id="<?= $categoria->categoria_id ?>" 
                                     data-url="editar_categoria.php">
                                     <i class="fas fa-pen"></i>
@@ -109,7 +109,7 @@ $categorias = $modeloCategoria->ListarCategorias();
         </div>
     </div>
 </div>
-
+<script src="../../../public/js/categoria.js"></script>
 <!-- Bootstrap & jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -41,20 +41,29 @@ class CRUDCategoria extends Conexion {
     }
 
     // Función para registrar una nueva categoría
-    public function RegistrarCategoria($nombre)
-{
-    try {
-        $conn = $this->Conectar();
-        $sql = "INSERT INTO categoria (nombre) VALUES (:nombre)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-        return $stmt->execute();
-    } catch (PDOException $e) {
-        error_log("Error al registrar categoría: " . $e->getMessage());
-        return false;
+  
+ 
+    public function RegistrarCategoria($nombre, $descripcion) {
+        try {
+            $conn = $this->Conectar();
+            $sql = "INSERT INTO categoria (nombre, descripcion) VALUES (:nombre, :descripcion)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+    
+            if ($stmt->execute()) {
+                return true; // Devuelve true si la consulta se ejecuta correctamente
+            } else {
+                // Registrar el error en los logs si execute() falla
+                error_log("Error al registrar categoría: " . implode(", ", $stmt->errorInfo()));
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Registrar el error en los logs
+            error_log("Error al registrar categoría: " . $e->getMessage());
+            return false;
+        }
     }
-}
-
 
     // Función para actualizar una categoría
     public function ActualizarCategoria($id, $nombre, $descripcion) {

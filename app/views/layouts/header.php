@@ -18,9 +18,9 @@ include '../../config/conexion.php';
     <!-- Archivo JavaScript personalizado -->
     <script src="../../../public/js/provedor.js"></script>
     <script src="../../../public/js/modelo.js"></script>
-    <script src="../../../public/js/zapato.js"></script>
-    <script src="../../../public/js/almacen.js"></script>
-    <script src="../../../public/js/categoria.js"></script>
+    
+    
+   
     <link href="../../../public/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  
 

@@ -20,7 +20,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-registrar" 
-                    data-url="registrar_ubicacion.php" 
+                    data-url="registrar_almacen.php" 
                     data-bs-toggle="tooltip" 
                     data-bs-placement="top" 
                     title="Registrar una nueva ubicación">
@@ -31,7 +31,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-consultar" 
-                    data-url="consultar_ubicacion.php" 
+                    data-url="consultar_almacen.php" 
                     data-bs-toggle="tooltip" 
                     data-bs-placement="top" 
                     title="Consultar una ubicación">
@@ -42,7 +42,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                 <button 
                     type="button" 
                     class="btn btn-outline-primary btn-filtrar" 
-                    data-url="filtrar_ubicacion.php" 
+                    data-url="filtrar_almacen.php" 
                     data-bs-toggle="tooltip" 
                     data-bs-placement="top" 
                     title="Filtrar ubicaciones por contenedor">
@@ -79,7 +79,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                                         type="button" 
                                         class="btn btn-outline-info btn-sm btn-info" 
                                         data-id="<?= $ubicacion->ubicacion_id ?>" 
-                                        data-url="mostrar_ubicacion.php">
+                                        data-url="mostrar_almacen.php">
                                         <i class="fas fa-info"></i>
                                     </button>
 
@@ -88,7 +88,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                                         type="button" 
                                         class="btn btn-outline-success btn-sm btn-editar" 
                                         data-id="<?= $ubicacion->ubicacion_id ?>" 
-                                        data-url="editar_ubicacion.php">
+                                        data-url="editar_almacen.php">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
 
@@ -97,7 +97,7 @@ $ubicaciones = $crudAlmacen->ListarUbicaciones();
                                         type="button" 
                                         class="btn btn-outline-danger btn-sm btn-eliminar" 
                                         data-id="<?= $ubicacion->ubicacion_id ?>" 
-                                        data-url="eliminar_ubicacion.php">
+                                        data-url="eliminar_almacen.php">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </td>

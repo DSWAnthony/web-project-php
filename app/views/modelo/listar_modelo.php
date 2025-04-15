@@ -119,10 +119,8 @@ $modelos = $modelo->ListarModelos();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jQuery (necesario para AJAX) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <!-- Script para cargar contenido dinámico en el modal -->
 <script>
-    
     $(document).on('click', '.btn-modal', function () {
         const url = $(this).data('url'); // Obtener la URL del archivo a cargar
         const id = $(this).data('id'); // Obtener el ID del modelo (si existe)

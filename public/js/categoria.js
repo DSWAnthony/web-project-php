@@ -1,57 +1,5 @@
 $(document).ready(function () {
-
-    function cargarModal(url, data = {}) {
-        console.log('Cargando modal desde:', url, 'con datos:', data);
-        $('#modalContent').html('<p class="text-center">Cargando...</p>');
-        $('#mainModal').modal('show');
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: data,
-            success: function (response) {
-                $('#modalContent').html(response);
-            },
-            error: function (xhr) {
-                console.error('Error:', xhr.status, xhr.statusText);
-                $('#modalContent').html('<div class="alert alert-danger text-center">Error al cargar el contenido.</div>');
-            }
-        });
-    }
-
-    
-    $(document).on('click', '.btn-registrar-categoria, .btn-consultar-categoria, .btn-editar-categoria', function () {
-        const url = $(this).data('url');
-        const id = $(this).data('id');
-        const data = id ? { id } : {};
-        cargarModal(url, data);
-    });
-
-
-    $(document).on('click', '.btn-eliminar-categoria', function () {
-        const id = $(this).data('id');
-        const url = $(this).data('url');
-
-        const contenido = `
-            <div class="text-center">
-                <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
-                <h4 class="mt-3">¿Estás seguro?</h4>
-                <p>Eliminarás la categoría con ID: <strong>${id}</strong>.</p>
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-danger btn-confirmar-eliminar-categoria me-2" data-id="${id}" data-url="${url}">
-                    <i class="fas fa-trash-alt"></i> Eliminar
-                </button>
-                <button class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="fas fa-times"></i> Cancelar
-                </button>
-            </div>
-        `;
-        $('#modalContent').html(contenido);
-        $('#mainModal').modal('show');
-    });
-
-
+    // Manejar clic en el botón "Eliminar Categoría"
     $(document).on('click', '.btn-confirmar-eliminar-categoria', function () {
         const id = $(this).data('id');
         const url = $(this).data('url');
@@ -60,107 +8,101 @@ $(document).ready(function () {
             try {
                 const res = JSON.parse(response);
                 if (res.success) {
-                    $('#modalContent').html(`<div class="alert alert-success">${res.message}</div>`);
-                    setTimeout(() => location.reload(), 1000);
+                    alert('Categoría eliminada correctamente.');
+                    location.reload();
                 } else {
-                    $('#modalContent').html(`<div class="alert alert-danger">${res.message}</div>`);
+                    alert('Error: ' + (res.message || 'No se pudo eliminar la categoría.'));
                 }
             } catch (e) {
-                $('#modalContent').html('<div class="alert alert-danger">Error inesperado del servidor.</div>');
+                alert('Error inesperado del servidor.');
             }
         }).fail(() => {
-            $('#modalContent').html('<div class="alert alert-danger">Error al eliminar la categoría.</div>');
-        });
-    });
-
-    // Filtrar categoría
-    $(document).on('click', '#btnFiltrarCategoria', function () {
-        const formData = $('#formFiltrarCategoria').serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: 'views/categoria/filtrar_categoria.php',
-            data: formData,
-            dataType: 'json',
-            success: function (response) {
-                const tabla = $('#tablaResultados');
-                tabla.empty();
-
-                if (response.success && response.data.length > 0) {
-                    response.data.forEach(categoria => {
-                        const fila = `
-                            <tr>
-                                <td>${categoria.id_categoria}</td>
-                                <td>${categoria.nombre_categoria}</td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" onclick="mostrarDescripcion('${categoria.descripcion_categoria.replace(/'/g, "\\'")}')">Info</button>
-                                </td>
-                            </tr>`;
-                        tabla.append(fila);
-                    });
-                } else {
-                    tabla.html(`<tr><td colspan="3" class="text-center">${response.message}</td></tr>`);
-                }
-            },
-            error: function () {
-                $('#tablaResultados').html('<tr><td colspan="3" class="text-danger text-center">Error al procesar la solicitud.</td></tr>');
-            }
-        });
-    });
-
-
-    $(document).on('click', '#btnConsultarCategoria', function () {
-        const formData = $('#formConsultarCategoria').serialize();
-        const url = 'views/categoria/consultar_categoria.php';
-    
-        $.post(url, formData, function (response) {
-            try {
-                const res = JSON.parse(response);
-                if (res.success) {
-                    const categoria = res.data;
-                    let html = `
-                        <table class="table table-bordered">
-                            <tr><th>ID</th><td>${categoria.id_categoria}</td></tr>
-                            <tr><th>Nombre</th><td>${categoria.nombre_categoria}</td></tr>
-                            <tr><th>Descripción</th><td>${categoria.descripcion_categoria || 'No especificada'}</td></tr>
-                        </table>
-                    `;
-                    $('#resultadosConsulta').html(html);
-                } else {
-                    $('#resultadosConsulta').html(`<div class="alert alert-warning">${res.message}</div>`);
-                }
-            } catch (e) {
-                $('#resultadosConsulta').html('<div class="alert alert-danger">Error inesperado del servidor.</div>');
-            }
-        }).fail(function () {
-            $('#resultadosConsulta').html('<div class="alert alert-danger">Error al intentar consultar la categoría.</div>');
+            alert('Error al eliminar la categoría.');
         });
     });
 });
 
+$(document).ready(function () {
+    // Manejar clic en el botón "Registrar"
+    $(document).on('click', '#btnRegistrarCategoria', function () {
+        const form = $('#formRegistrarCategoria'); // Seleccionar el formulario
+        const formData = form.serialize(); // Serializar los datos del formulario
 
-function mostrarDescripcion(descripcion) {
-    const modalHtml = `
-        <div class="modal fade" id="modalDescripcion" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Descripción de Categoría</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info">
-                            <strong>Descripción:</strong> ${descripcion}
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    $('#modalDescripcion').remove(); 
-    new bootstrap.Modal(document.getElementById('modalDescripcion')).show();
-}
+        // Validar que los campos no estén vacíos
+        const nombre = $('#nombre').val().trim();
+        const descripcion = $('#descripcion').val().trim();
+
+        if (!nombre || !descripcion) {
+            alert('Por favor, completa todos los campos antes de registrar.');
+            return;
+        }
+
+        // Deshabilitar el botón para evitar múltiples clics
+        const button = $(this);
+        button.prop('disabled', true);
+
+        // Realizar la solicitud AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'registrar_categoria.php', // Archivo PHP que procesa el registro
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message || 'Categoría registrada correctamente.'); // Mostrar mensaje de éxito
+                    $('#mainModal').modal('hide'); // Cerrar el modal
+                    form[0].reset(); // Limpiar el formulario
+                    location.reload(); // Recargar la página para mostrar la nueva categoría
+                } else {
+                    alert(response.message || 'Hubo un error al registrar la categoría.');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error en la solicitud AJAX:', status, error);
+                alert('Hubo un error al registrar la categoría. Por favor, revisa la consola para más detalles.');
+            },
+            complete: function () {
+                // Rehabilitar el botón después de completar la solicitud
+                button.prop('disabled', false);
+            }
+        });
+    });
+
+    // Manejar clic en botones con la clase "btn-modal"
+    $(document).on('click', '.btn-modal', function () {
+        const url = $(this).data('url'); // Obtener la URL del archivo a cargar
+        $('#modalContent').html('<p class="text-center">Cargando contenido...</p>'); // Mensaje de carga
+        $('#mainModal').modal('show'); // Mostrar el modal
+
+        // Cargar el contenido del modal
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (response) {
+                $('#modalContent').html(response); // Cargar el contenido en el modal
+            },
+            error: function () {
+                $('#modalContent').html('<p class="text-center text-danger">Error al cargar el contenido. Por favor, inténtelo de nuevo.</p>');
+            }
+        });
+    });
+});
+
+    // Manejar clic en botones con la clase "btn-modal"
+    $(document).on('click', '.btn-modal', function () {
+        const url = $(this).data('url'); // Obtener la URL del archivo a cargar
+        $('#modalContent').html('<p class="text-center">Cargando contenido...</p>'); // Mensaje de carga
+        $('#mainModal').modal('show'); // Mostrar el modal
+
+        // Cargar el contenido del modal
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (response) {
+                $('#modalContent').html(response); // Cargar el contenido en el modal
+            },
+            error: function () {
+                $('#modalContent').html('<p class="text-center text-danger">Error al cargar el contenido. Por favor, inténtelo de nuevo.</p>');
+            }
+        });
+    });
