@@ -27,12 +27,10 @@ include '../../config/conexion.php';
 
 </head>
 
-<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="../home/index.php">ELITE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-=======
 <nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top" style="background: linear-gradient(90deg, #111 0%, #222 100%);">
     <div class="container-fluid px-4">
        
@@ -44,7 +42,6 @@ include '../../config/conexion.php';
         <!-- Botón responsive -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
->>>>>>> 2108e96009da811a0bcf1392bcc2e9c4c732be76
             <span class="navbar-toggler-icon"></span>
         </button>
 
